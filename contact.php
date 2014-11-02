@@ -1,4 +1,10 @@
-<?php include("inc/header.html");?>
+<?php 
+require_once("inc/Webpage.class.php");
+$contactpage = new Webpage("Journey - Contact Us");
+$contactpage->display_header();
+echo "<body>\n";
+$contactpage->display_nav();
+?>
 <br>
 <br>
 <div class="container">
@@ -50,4 +56,7 @@
 </div>
 
 
-<?php include("inc/footer.html");?>
+<?php
+$contactpage->display_footer();
+echo "\n</body>";
+?>
