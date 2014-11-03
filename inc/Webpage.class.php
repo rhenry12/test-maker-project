@@ -10,8 +10,8 @@ class Webpage {
 		$this->nav_links = array(
 			"Take a Tour" => "#",
 	                        	"Contact" => "contact.php",
-	                        	"Register" => "#",
-	                        	"Log in" => "#");
+	                        	"Register" => "register.php",
+	                        	"Log in" => "login.php");
 		//Set the company name
 		$this->company_name = "Your Website";
 		//Date for copyright info
@@ -100,8 +100,19 @@ class Webpage {
 			<script src='js/jquery-1.11.0.js'></script>
 
 			<!-- Bootstrap Core JavaScript -->
-			<script src='js/bootstrap.min.js'></script>
-		</body>";
+			<script src='js/bootstrap.min.js'></script>";
+		$path =  pathinfo($_SERVER['REQUEST_URI']);
+		if($path['filename'] == "register"):
+		    echo 
+		    "\n\t\t\t<script>
+		        $(function() {
+		        	$('#loginbox').hide();
+		        	$('#signupbox').show();
+		        });
+		    </script>\n";
+		endif;
+		echo 
+		"</body>";
 	}
 }
 /*DateInfo class - finds the current date and time in the New York time zone USA*/
