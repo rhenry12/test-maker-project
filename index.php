@@ -2,8 +2,6 @@
 require_once("inc/Webpage.class.php");
 $homepage = new Webpage("Journey - Online Testing Resource for All");
 $homepage->display_header();
-echo "<body>\n";
-$homepage->display_nav();
 ?>
 
     <!-- Image Background Page Header -->
@@ -74,6 +72,5 @@ $homepage->display_nav();
 
 <?php
 $homepage->display_footer();
-echo "\n</body>";
 ?>
 

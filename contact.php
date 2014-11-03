@@ -2,8 +2,6 @@
 require_once("inc/Webpage.class.php");
 $contactpage = new Webpage("Journey - Contact Us");
 $contactpage->display_header();
-echo "<body>\n";
-$contactpage->display_nav();
 ?>
 <br>
 <br>
@@ -58,5 +56,4 @@ $contactpage->display_nav();
 
 <?php
 $contactpage->display_footer();
-echo "\n</body>";
 ?>

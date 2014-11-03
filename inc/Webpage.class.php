@@ -4,16 +4,20 @@ class Webpage {
 	private $title, $nav_links, $company_name, $date;
 
 	function __construct($page_title) {
+		//Set the page title
 		$this->title = $page_title;
+		//Create the navigation links
 		$this->nav_links = array(
 			"Take a Tour" => "#",
 	                        	"Contact" => "contact.php",
 	                        	"Register" => "#",
 	                        	"Log in" => "#");
+		//Set the company name
 		$this->company_name = "Your Website";
+		//Date for copyright info
 		$this->date = new DateInfo;
 	}
-
+	/*Function to write dynamic html heading to web page*/
 	public function display_header() {
 		echo 
 		"<!DOCTYPE html>
@@ -25,7 +29,7 @@ class Webpage {
 		    <meta name='description' content=''>
 		    <meta name='author' content=''>
 
-		    <title><?=$this->title?></title>
+		    <title>" . $this->title . "</title>
 
 		    <!-- Bootstrap Core CSS -->
 		    <link href='css/bootstrap.min.css' rel='stylesheet'>
@@ -39,9 +43,11 @@ class Webpage {
 		        <script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
 		        <script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
 		    <![endif]--> 
-		</head>";
+		</head>
+		<body>\n";
+		$this->display_nav();
 	}
-
+	/*Function to write  dynamic navigation to web page*/
 	public function display_nav() {
 		echo
 		"<!-- Navigation -->
@@ -74,30 +80,31 @@ class Webpage {
 		        <!-- /.container -->
 		    </nav>";
 	}
-	
+	/*Function to write dynamic footer information to web page*/
 	public function display_footer() {
 		echo
-		"<div class='container'>
-		        <hr>
-		            <!-- Footer -->
-		        <footer>
-		            <div class='row'>
-		                <div class='col-lg-12'>
-		                    <p>Copyright &copy; " . $this->company_name . " ". $this->date->getYear() . "</p>
-		                </div>
-		            </div>
-		            <!-- /.row -->
-		        </footer>
-		</div><!-- /.container -->
+		"\t\t\t<div class='container'>
+			        <hr>
+			            <!-- Footer -->
+			        <footer>
+			            <div class='row'>
+			                <div class='col-lg-12'>
+			                    <p>Copyright &copy; " . $this->company_name . " ". $this->date->getYear() . "</p>
+			                </div>
+			            </div>
+			            <!-- /.row -->
+			        </footer>
+			</div><!-- /.container -->
 
-		<!-- jQuery Version 1.11.0 -->
-		<script src='js/jquery-1.11.0.js'></script>
+			<!-- jQuery Version 1.11.0 -->
+			<script src='js/jquery-1.11.0.js'></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src='js/bootstrap.min.js'></script>";
+			<!-- Bootstrap Core JavaScript -->
+			<script src='js/bootstrap.min.js'></script>
+		</body>";
 	}
 }
-
+/*DateInfo class - finds the current date and time in the New York time zone USA*/
 class DateInfo {
 	private $dtz, $dttm;
 
@@ -105,11 +112,11 @@ class DateInfo {
 		$this->dtz = new DateTimeZone('America/New_York');
 		$this->dttm = new DateTime('now', $this->dtz);
 	}
-
+	//Function to provide the current date and time as a string
 	public function getDateTimeString() {
 		return $this->dttm->format('Y-m-d H:i:s');
 	}
-
+	//Function to provide the current year as a string
 	public function getYear() {
 		return $this->dttm->format('Y');
 	}
